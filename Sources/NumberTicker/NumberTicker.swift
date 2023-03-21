@@ -43,7 +43,7 @@ public struct NumberTicker: View {
     ///   - fadeColor: The color used to add a gradient fade to the top and bottom of the NumberTicker. Note: Fade effect will only show if both the fadeColor is set and topBottomPadding is greater than 0.
     public init(number: Double,
                 decimalPlaces: Int = 0,
-                numberStyle: NumberFormatter.Style = .none,
+                numberStyle: NumberFormatter.Style? = nil,
                 locale: Locale = .autoupdatingCurrent,
                 prefix: String = "",
                 suffix: String = "",
@@ -88,5 +88,16 @@ public struct NumberTicker: View {
                 self.shouldAnimate = true
             }
         }
+    }
+}
+
+struct NumberTicker_Previews: PreviewProvider {
+    static var previews: some View {
+        NumberTicker(
+            number: 100.24,
+            numberStyle: nil,
+            locale: Locale(identifier: "de_DE"),
+            font: Font.system(size: 25, weight: .medium, design: .serif)
+        )
     }
 }

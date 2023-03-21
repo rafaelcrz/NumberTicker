@@ -22,14 +22,18 @@ internal class NumberComponentsManager {
     
     public func setup(for number: Double,
                decimalPlaces: Int,
-               numberStyle: NumberFormatter.Style = .decimal,
+               numberStyle: NumberFormatter.Style? = .decimal,
                locale: Locale = .autoupdatingCurrent) {
         self.number = number
         self.decimalPlaces = decimalPlaces
         
         self.numberFormatter.minimumFractionDigits = decimalPlaces
         self.numberFormatter.maximumFractionDigits = decimalPlaces
-        self.numberFormatter.numberStyle = numberStyle
+        if let numberStyle = numberStyle {
+            self.numberFormatter.numberStyle = numberStyle
+        } else {
+            self.numberFormatter.numberStyle = .decimal
+        }
         self.numberFormatter.locale = locale
         
         numberComponents = components(for: number, decimalPlaces: decimalPlaces, formatter: numberFormatter)

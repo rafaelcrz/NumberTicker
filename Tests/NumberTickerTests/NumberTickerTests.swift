@@ -5,10 +5,10 @@ final class NumberComponentsManagerTests: XCTestCase {
     let numberComponentsManager = NumberComponentsManager()
     
     func testSetup() {
-        numberComponentsManager.setup(for: 1, decimalPlaces: 2, numberStyle: .none, locale: Locale(identifier: "en_EN"))
+        numberComponentsManager.setup(for: 1, decimalPlaces: 2, locale: Locale(identifier: "en_EN"))
         XCTAssertEqual(numberComponentsManager.numberComponents.count, 4)
         
-        numberComponentsManager.setup(for: 1, decimalPlaces: 2, numberStyle: .none, locale: Locale(identifier: "en_EN"))
+        numberComponentsManager.setup(for: 1, decimalPlaces: 2, locale: Locale(identifier: "en_EN"))
         XCTAssertNotEqual(numberComponentsManager.numberComponents.count, 3)
         
         numberComponentsManager.setup(for: 1500000.73, decimalPlaces: 3, numberStyle: .decimal, locale: Locale(identifier: "en_US"))

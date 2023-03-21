@@ -14,18 +14,18 @@ extension FloatingPoint {
 }
 
 struct ContentView: View {
-    @State var currentNumber = 150000.0
+    @State var currentNumber = 150000.25
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            NumberTicker(number: currentNumber * 0.84025, prefix: "£", font: Font.system(size: 25, weight: .medium, design: .serif))
-                .foregroundColor(Color(.secondaryLabel))
+            NumberTicker(number: currentNumber, prefix: "R$", font: Font.system(size: 25, weight: .medium, design: .serif))
+                .foregroundColor(Color(.red))
                 .padding(.bottom, 5)
             NumberTicker(number: currentNumber * 0.920078, numberStyle: NumberFormatter.Style.currencyPlural, locale: Locale(identifier: "de_DE"), font: Font.system(size: 25, weight: .medium, design: .serif)) // German Style
                 .foregroundColor(Color(.secondaryLabel))
                 .padding(.bottom, 15)
             NumberTicker(number: currentNumber, prefix: "US $") // US Style
-            NumberTicker(number: currentNumber * 4, decimalPlaces: 0, numberStyle: .none, prefix: (currentNumber * 4).isInteger ? "" : "~", suffix: currentNumber * 4 == 1 ? " Quarter" : " Quarters", font: Font.system(size: 20, weight: .medium))
+            NumberTicker(number: currentNumber * 4, decimalPlaces: 0, prefix: (currentNumber * 4).isInteger ? "" : "~", suffix: currentNumber * 4 == 1 ? " Quarter" : " Quarters", font: Font.system(size: 20, weight: .medium))
                 .foregroundColor(Color(.secondaryLabel))
                 .padding(.bottom, 80)
             
